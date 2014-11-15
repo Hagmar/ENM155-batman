@@ -1,0 +1,48 @@
+digraph {
+	edge [fontname="Bitstream Vera Sans",
+		fontsize="16.00",
+		style="bold"]
+
+	node [fontname="Bitstream Vera Sans",
+		fontsize="16.00",
+		shape=Mrecord,
+		style="bold,filled",
+		fillcolor=white];
+	edge [style=bold];
+
+	subgraph industry {
+		fossil [label = "Fossila bränslen"];
+		bio [label = "Biobränslen"];
+		nuclear [label = "Kärnkraft"];
+		water [label = "Vattenkraft"];
+		wind [label = "Vindkraft"];
+		spill [label = "Spillvärme"];
+		pump [label = "Värmepump"];
+
+		district_heating [label = "{{<fossil> 10% | <bio> 61% | <spill> 7% | <pump> 22% } |Fjärrvärme}"];
+		el_spec [label = "{{<fossil> 1.7% | <bio> 3.8% | <wind> 2.8% | <nuclear> 39.7% | <water> 47.8% | <spill> 4.2% } | El, specifik}"];
+		heating [label = "{{<fossil> 56% | <bio> 40% | <district> 4%} |Värme}"];
+		industry [label = "{{<heating> 121TWh | <el_spec>53TWh} | Industri}"];
+
+
+		fossil -> district_heating:fossil [label = "75%"];
+		bio -> district_heating:bio [label = "75%"];
+		spill -> district_heating:spill [label = "100%"];
+		pump -> district_heating:pump [label = "250%"];
+
+		fossil -> heating:fossil [label = "90%"];
+		bio -> heating:bio [label = "90%"];
+		district_heating -> heating:district [label = "90%"];
+
+		heating -> industry:heating [label = "100%"];
+
+		fossil -> el_spec:fossil [label = "35%"];
+		bio -> el_spec:bio [label = "30%"];
+		wind -> el_spec:wind [label = "100%"];
+		nuclear -> el_spec:nuclear [label = "34%"];
+		water -> el_spec:water [label = "100%"];
+		spill -> el_spec:spill [label = "100%"];
+
+		el_spec -> industry:el_spec [label = "100%"];
+	}
+}

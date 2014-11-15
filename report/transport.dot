@@ -1,0 +1,23 @@
+digraph {
+	edge [fontname="Bitstream Vera Sans",
+		fontsize="16.00",
+		style="bold"]
+
+	node [fontname="Bitstream Vera Sans",
+		fontsize="16.00",
+		shape=Mrecord,
+		style="bold,filled",
+		fillcolor=white];
+	edge [style=bold];
+
+	subgraph transport {
+		fossil1 [label = "Fossila bränslen"];
+		bio1 [label = "Biobränslen"];
+		drivmedel [label = "{{<fossil> 94% | <bio> 6%} | Drivmedel}"];
+		transport [label = "{<drivmedel> 18Twh | Transport}"];
+
+		fossil1 -> drivmedel:fossil [label = "90%"];
+		bio1 -> drivmedel:bio [label = "50%"];
+		drivmedel -> transport:drivmedel [label = "20%"];
+	}
+}
