@@ -44,6 +44,7 @@ digraph {
 		water -> el_spec:water [label = "100%"];
 		spill -> el_spec:spill [label = "100%"];
 
+		el_spec -> pump [label = "100%"];
 		el_spec -> residences:el_spec [label = "100%"];
 	}
 }
