@@ -10,7 +10,6 @@ def main():
     with open(argv[1], "r") as fp:
         obj = json.load(fp)
 
-    sectors = {}
     energies = {}
     primaryenergies = {}
 
@@ -18,13 +17,15 @@ def main():
         primaryenergies[energy] = Energy(obj["primaryenergies"][energy]["name"])
 
     for sector in obj["sectors"]:
-        sectors[sector] = Sector(obj["sectors"][sector]["name"])
+        pass
+        #sectors[sector] = Sector(obj["sectors"][sector]["name"])
 
         #for energy in obj["sectors"][sector]["inputs"]:
+            #primaryenergies[energy].add_input(
 
 
     print(primaryenergies)
-    print(sectors)
+    #print(sectors)
 
 if __name__ == "__main__":
     main()
