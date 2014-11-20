@@ -1,5 +1,6 @@
 from Energy import Sector, Energy
 from sys import argv, exit
+from copy import copy
 import json
 
 def main():
@@ -10,21 +11,25 @@ def main():
     with open(argv[1], "r") as fp:
         obj = json.load(fp)
 
+    sectors = {}
     energies = {}
     primaryenergies = {}
+    energy = {}
 
     for energy in obj["primaryenergies"]:
         primaryenergies[energy] = Energy(obj["primaryenergies"][energy]["name"])
 
+    energies = copy(primaryenergies)
+
     for sector in obj["sectors"]:
         pass
-        #sectors[sector] = Sector(obj["sectors"][sector]["name"])
+        sectors[sector] = Sector(obj["sectors"][sector]["name"])
 
-        #for energy in obj["sectors"][sector]["inputs"]:
-            #primaryenergies[energy].add_input(
+        for energy in obj["sectors"][sector]["inputs"]:
+            energies[energy].add_input()
 
 
-    print(primaryenergies)
+    print(energies)
     #print(sectors)
 
 if __name__ == "__main__":
