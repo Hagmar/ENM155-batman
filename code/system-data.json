@@ -23,7 +23,7 @@
 			"inputs": {
 				"electric": {
 					"name": "El, specifik",
-					"energy": "55",
+					"energy": 55,
 					"efficiency": 100,
 					"inputs": {
 						"fossil": {
