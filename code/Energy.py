@@ -42,9 +42,6 @@ class Energy:
 			self.outputs.append(edge)
 			return new_energy
 
-	def calculate_energy(self):
-		self.energy = 0
-
 	def value(self, sector=None):
 		value = self.energy
 		for edge in self.outputs:
