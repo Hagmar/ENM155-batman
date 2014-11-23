@@ -1,221 +1,177 @@
 {
 	"name": "Sveriges primärenergitillförsel",
-	"primaryenergies": {
+	"primary_energies": {
 		"fossil": {
-			"name": "Fossila bränslen"
+			"name": "Fossila bränslen",
+			"energies": {
+				"fuel": {
+					"efficiency": 0.90,
+					"quota": 0.94
+				},
+				"heating_residences": {
+					"efficiency": 0.80,
+					"quota": 0.15
+				},
+				"heating_industry": {
+					"efficiency": 0.90,
+					"quota": 0.56
+				},
+				"district_heating": {
+					"efficiency": 0.75,
+					"quota": 0.10
+				},
+				"electric": {
+					"efficiency": 0.35,
+					"quota": 0.017
+				}
+			}
 		},
 		"bio": {
-			"name": "Biobränslen"
+			"name": "Biobränslen",
+			"energies": {
+				"fuel": {
+					"efficiency": 0.50,
+					"quota": 0.06
+				},
+				"heating_residences": {
+					"efficiency": 0.80,
+					"quota": 0.13
+				},
+				"heating_industry": {
+					"efficiency": 0.90,
+					"quota": 0.40
+				},
+				"district_heating": {
+					"efficiency": 0.75,
+					"quota": 0.61
+				},
+				"electric": {
+					"efficiency": 0.30,
+					"quota": 0.038
+				}
+			}
 		},
 		"nuclear": {
-			"name": "Kärnkraft"
+			"name": "Kärnkraft",
+			"energies": {
+				"electric": {
+					"efficiency": 0.34,
+					"quota": 0.397
+				}
+			}
 		},
 		"water": {
-			"name": "Vattenkraft"
+			"name": "Vattenkraft",
+			"energies": {
+				"electric": {
+					"efficiency": 1.00,
+					"quota": 0.478
+				}
+			}
 		},
 		"wind": {
-			"name": "Vindkraft"
+			"name": "Vindkraft",
+			"energies": {
+				"electric": {
+					"efficiency": 1.00,
+					"quota": 0.028
+				}
+			}
+		},
+		"spill": {
+			"name": "Spillvärme",
+			"energies": {
+				"electric": {
+					"efficiency": 1.00,
+					"quota": 0.042
+				},
+				"district_heating": {
+					"efficiency": 1.00,
+					"quota": 0.07
+				}
+			}
 		}
 	},
+	"energies": {
+		"fuel": {
+			"name": "Drivmedel",
+			"sectors": {
+				"transport": {
+					"efficiency": 0.20,
+					"amount": 18
+				}
+			}
+		},
+		"electric": {
+			"name": "El",
+			"energies": {
+				"heat_pump": {
+					"efficiency": 1.00,
+					"quota": 1.00
+				},
+				"heating_residences": {
+					"efficiency": 1.00,
+					"quota": 0.23
+				}
+			},
+			"sectors": {
+				"residences": {
+					"efficiency": 1.00,
+					"amount": 55
+				},
+				"industry": {
+					"efficiency": 1.00,
+					"amount": 53
+				}
+			}
+		},
+		"heat_pump": {
+			"name": "Värmepump",
+			"energies": {
+				"district_heating": {
+					"efficiency": 2.50,
+					"quota": 0.22
+				}
+			}
+		},
+		"district_heating": {
+			"name": "Fjärrvärme",
+			"energies": {
+				"heating_residences": {
+					"efficiency": 0.90,
+					"quota": 0.49
+				},
+				"heating_industry": {
+					"efficiency": 0.90,
+					"quota": 0.04
+				}
+			}
+		},
+		"heating_residences": {
+			"name": "Värme, bostäder",
+			"sectors": {
+				"residences": {
+					"efficiency": 1.00,
+					"amount": 90
+				}
+			}
+		},
+		"heating_industry": {
+			"name": "Värme, industri",
+			"sectors": {
+				"industry": {
+					"efficiency": 1.00,
+					"amount": 121
+				}
+			}
+		}
+	}
 	"sectors": {
-		"residences": {
-			"name": "Bostäder",
-			"inputs": {
-				"electric": {
-					"name": "El, specifik",
-					"energy": 55,
-					"efficiency": 100,
-					"inputs": {
-						"fossil": {
-							"name": "Fossila bränslen",
-							"quota": 1.7,
-							"efficiency": 35
-						},
-						"bio": {
-							"name": "Biobränslen",
-							"quota": 3.8,
-							"efficiency": 30
-						},
-						"wind": {
-							"name": "Vindkraft",
-							"quota": 2.8,
-							"efficiency": 100
-						},
-						"nuclear": {
-							"name": "Kärnkraft",
-							"quota": 39.7,
-							"efficiency": 34
-						},
-						"water": {
-							"name": "Vattenkraft",
-							"quota": 47.8,
-							"efficiency": 100
-						},
-						"spill": {
-							"name": "Spillvärme",
-							"quota": 4.2,
-							"efficiency": 100
-						}
-					}
-				},
-				"heating": {
-					"name": "Värme",
-					"energy": 90,
-					"efficiency": 100,
-					"inputs": {
-						"fossil": {
-							"name": "Fossila bränslen",
-							"quota": 15,
-							"efficiency": 80
-						},
-						"bio": {
-							"name": "Biobränslen",
-							"quota": 13,
-							"efficiency": 90
-						},
-						"district_heating": {
-							"name": "Fjärrvärme",
-							"quota": 49,
-							"efficiency": 90,
-							"inputs": {
-								"fossil": {
-									"name": "Fossila bränslen",
-									"quota": 10,
-									"efficiency": 75
-								},
-								"bio": {
-									"name":"Biobränslen",
-									"quota": 61,
-									"efficiency": 75
-								},
-								"spill": {
-									"name": "Spillvärme",
-									"quota": 7,
-									"efficiency": 100
-								},
-								"pump": {
-									"name": "Värmepump",
-									"quota": 22,
-									"efficiency": 250
-								}
-							}
-						},
-						"el_heat": {
-							"name": "El, uppvärmning",
-							"quota": 23,
-							"efficiency": 100
-						}
-					}
-				}
-			}
-		},
-		"transport": {
+		"residences":
+			"name": "Bostäder"
+		"transport":
 			"name": "Transport",
-			"inputs": {
-				"fuel": {
-					"name": "Drivmedel",
-					"energy": 18,
-					"efficiency": 20,
-					"inputs": {
-						"fossil": {
-							"name":"Fossila bränslen",
-							"quota": 94,
-							"efficiency": 90
-						},
-						"bio": {
-							"name":"Biobränslen",
-							"quota": 6,
-							"efficiency": 50
-						}
-					}
-				}
-			}
-		},
-		"industry": {
-			"name": "Industri",
-			"inputs": {
-				"electric": {
-					"name": "El, specifik",
-					"energy": 53,
-					"efficiency": 100,
-					"inputs": {
-						"fossil": {
-							"name":"Fossila bränslen",
-							"quota": 1.7,
-							"efficiency": 35
-						},
-						"bio": {
-							"name":"Biobränslen",
-							"quota": 3.8,
-							"efficiency": 30
-						},
-						"wind": {
-							"name":"Vindkraft",
-							"quota": 2.8,
-							"efficiency": 100
-						},
-						"nuclear": {
-							"name":"Kärnkraft",
-							"quota": 39.7,
-							"efficiency": 34
-						},
-						"water": {
-							"name":"Vattenkraft",
-							"quota": 47.8,
-							"efficiency": 100
-						},
-						"spill": {
-							"name": "Spillvärme",
-							"quota": 4.2,
-							"efficiency": 100
-						}
-					}
-				},
-				"heating": {
-					"name": "Värme",
-					"energy": 121,
-					"efficiency": 100,
-					"inputs": {
-						"fossil": {
-							"name":"Fossila bränslen",
-							"quota": 56,
-							"efficiency": 90
-						},
-						"bio": {
-							"name":"Biobränslen",
-							"quota": 40,
-							"efficiency": 90
-						},
-						"district_heating": {
-							"name": "Fjärrvärme",
-							"quota": 49,
-							"efficiency": 90,
-							"inputs": {
-								"fossil": {
-									"name":"Fossila bränslen",
-									"quota": 10,
-									"efficiency": 75
-								},
-								"bio": {
-									"name":"Biobränslen",
-									"quota": 61,
-									"efficiency": 75
-								},
-								"spill": {
-									"name": "Spillvärme",
-									"quota": 7,
-									"efficiency": 100
-								},
-								"pump": {
-									"name": "Värmepump",
-									"quota": 22,
-									"efficiency": 250
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		"industry":
+			"name": "Industri"
 	}
 }
