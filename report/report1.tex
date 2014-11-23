@@ -34,29 +34,25 @@ Magnus Hagmar \and Niclas Ogeryd \and Robert Nyquist}
 
 \section{Introduktion}
 Denna rapport innehåller en enkel modell utav Sveriges energisystem som det ser ut idag.
-Den innehåller en matematisk modell samt en uppskattning utav Sveriges totala primärenergitillförsel.
+Modellen visar hur olika primäreneriger födelas på de tre sektorerna industri, transport och bostäder samt en uppskattning utav Sveriges totala primärenergitillförsel.
 
 
 \section{Metod}
 Modellen är nerbruten i tre delar, industri, transport och bostäder som är de olika sektorerna.
-För varje sektor så listas alla primärenergier som birdrar till respektive sektor. Varje primärenergi går sedan vidare till de olika sekundärenergierna som den bidrar till. Varje sekundär energi går till sist vidare till sektorn, alternativ till en ny sekundärenergi som i sin tur går vidare till en sektor eller ytterligare en sekundärenergi. \\
+För varje sektor så listas alla primärenergier som birdrar till respektive sektor. Varje primärenergi går sedan vidare till de olika sekundärenergierna som den bidrar till. Varje sekundärenergi går vidare till sektorn, alternativ till en ny sekundärenergi som i sin tur går vidare till en sektor eller ytterligare en sekundärenergi. \\
 I Appendix B finns de matematiska formlerna för att räkna ut primarenergierna för varje enskild sektor.
 
 
 \begin{itemize}
 \item Då vi har brutit ner modellen i sektorer så följer de inte diagrammet i Figur 1 i lab PM.
-Istället så ger flödesschemat i Appendix A en direkt bild utav våran implementation.
+Istället så ger flödesschemat i Appendix A en direkt bild utav strukturen på våran implementation.
 
 
 \item Modellen är byggd så att det går att ta reda på tillförseln av varje enskild primärenergi samt vilka typer av primärenergi, och mängedn, varje enskild sektor använder.
-Det går även att räkna ut värden sekundärenerg för varje sektor med hjälp av modellen.
+Det går även att räkna ut värden på sekundärenergierna för varje sektor med hjälp av modellen.
 
 \item Då varje sektor innehåller alla primärenergier och sekundärenergier som bidrar så blir det väldigt enkelt att addera nya energier.
-
-Beskriv kortfattat hur man skulle gå till väga för att lägga till ett
-nytt primärenergislag i er modell (till exempel solenergi). Samma sak för
-ett nytt sekundärenergislag (till exempel vätgas genom elektrolys och
-reformering).
+Den nya energin läggs till i sektorn den bidrar till och går sedan vidare till en sekundärenerig eller sektorn.
 \end{itemize}
 
 \section{Resultat}
