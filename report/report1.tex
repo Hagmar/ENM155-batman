@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt,fleqn]{article}
 
 \usepackage[utf8]{inputenc}
-\usepackage[swedish]{babel}
+%\usepackage[swedish]{babel}
 \usepackage[lighttt]{lmodern}
 
 %\usepackage{amsmath}
@@ -11,7 +11,8 @@
 %\usepackage{parskip}
 %\usepackage{enumerate}
 %\usepackage{tikz}
-%\usepackage{graphicx}
+\usepackage{graphicx}
+
 
 %\usepackage{geometry}
 %\geometry{
@@ -29,24 +30,23 @@ Magnus Hagmar \and Niclas Ogeryd \and Robert Nyquist}
 
 \section{Introduktion}
 Denna rapport innehåller en enkel modell utav Sveriges energisystem som det ser ut idag.
-Den innehåller en matematisk modell samten uppskattning utav Sveriges totala primärenergitilförsel.
+Den innehåller en matematisk modell samten uppskattning utav Sveriges totala primärenergitillförsel.
 
 
 \section{Metod}
-Beskriv hur vi löst uppgiften, genom att beskriva vår modell, dels
-matematiskt och dels med ord. Utöver den tekniska beskrivningen ska vi
-svara på följande konkreta frågor om vår modell:
+Modellen är nerbruten i tre delar, industri, transport och bostäder som är de olika sektorerna.
+
 
 \begin{itemize}
-\item Följer er implementationsstruktur strukturen på diagrammet i Figur 1?
-I så fall hur? Om inte, finns det något liknande flödesschema som mer
-direkt motsvarar er implementation?
+\item Då vi har brutit ner modellen i sektorer så följer de inte diagrammet i Figur 1 i lab PM.
+Istället så ger flödesschemat i Appendix A en direkt bild utav våran implementation.
 
-\item Ge ett par exempel på hur man kan utvinna intressant information från
-er modell. Är den användbar för något särskilt utöver huvuduppgiften (att
-beräkna total primärenergitillförsel)?
 
-\item Beskriv kortfattat hur man skulle gå till väga för att lägga till ett
+\item Modellen är byggd så att det går att ta reda på tillförseln av varje enskild primärenergi samt vilka typer av primärenergi, och mängedn, varje enskild sektor använder.
+
+\item
+
+Beskriv kortfattat hur man skulle gå till väga för att lägga till ett
 nytt primärenergislag i er modell (till exempel solenergi). Samma sak för
 ett nytt sekundärenergislag (till exempel vätgas genom elektrolys och
 reformering).
@@ -57,6 +57,12 @@ Presentera Sveriges totala primärenergitillförsel, samt uppdelat på
 respektive energikälla.
 
 \appendix
+\section{Flödesschema}
+\begin{figure}[h]
+	\centering 
+ 		\includegraphics[scale = 0.2]{diagram.pdf}
+		\label{diagram}
+\end{figure}
 \section{Programkod}
 Bifoga koden
 
