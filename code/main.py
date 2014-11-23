@@ -11,42 +11,51 @@ def main():
 	with open("system-data.json", "r") as fp:
 		obj = json.load(fp)
 
+	(primaryenergies, energies, sectors) = build_model(obj)
+	return sectors
+	
+def build_model(obj):
 	sectors = {}
 	energies = {}
 	primaryenergies = {}
-	energy = {}
-
-	for energy in obj["primaryenergies"]:
-		primaryenergies[energy] = Energy(obj["primaryenergies"][energy]["name"])
-
-	energies = copy(primaryenergies)
-	sectors = build_model(obj)
-	return sectors
-	#for energy in obj["sectors"][sector]["inputs"]:
-	#	energies[energy].add_input()
 	
-	#print(energies)
-	#print(sectors)
-
-def build_model(obj):
-	sectors = {}
-	for sector in obj["sectors"]:
-		sectors[sector] = Sector(obj["sectors"][sector]["name"])
+	for energy_id in obj["primary_energies"]:
+		energy_obj = obj["primary_energies"][energy_id]
+		energy = Energy(energy_id, energy_obj["name"])
+		primaryenergies[energy_id] = energy
+		energies[energy_id] = energy
 		
-		for input_name in obj["sectors"][sector]["inputs"]:
-			input = obj["sectors"][sector]["inputs"][input_name]
-			energy = Energy(input["name"], energy=float(input["energy"])*100/input["efficiency"], efficiency=input["efficiency"]/100.0)
-			sectors[sector].add_energy(input["name"], energy)
-			add_inputs(input, energy)
+		add_inputs(obj, energy_id, energy_obj, energies)
 	
-	return sectors
+	for energy_id in obj["energies"]:
+		energy_obj = obj["energies"][energy_id]
+		if not energy_id in energies:
+			energies[energy_id] = Energy(energy_id, obj["energies"][energy_id]["name"])
+		add_inputs(obj, energy_id, energy_obj, energies)
+		add_sectors(obj, energy_id, energy_obj, sectors, energies)
+	
+	return (primaryenergies, energies, sectors)
 
-def add_inputs(obj, parent):
-	if "inputs" in obj:
-		for input_name in obj["inputs"]:
-			input = obj["inputs"][input_name]
-			new_energy = parent.add_input(input["name"], quota=input["quota"]/100.0, efficiency=input["efficiency"]/100.0)
-			add_inputs(input, new_energy)
+
+def add_inputs(obj, id, energy_obj, energies):
+	if "energies" in energy_obj:
+		for energy_id in energy_obj["energies"]:
+			if not energy_id in energies:
+				energies[energy_id] = Energy(energy_id, obj["energies"][energy_id]["name"])
+			efficiency = energy_obj["energies"][energy_id]["efficiency"]
+			quota = energy_obj["energies"][energy_id]["quota"]
+			energies[energy_id].add_input(id, energies[id], efficiency, quota)
+			energies[id].add_subenergy(energy_id, energies[energy_id], efficiency, quota)
+
+def add_sectors(obj, id, energy_obj, sectors, energies):
+	if "sectors" in energy_obj:
+		for sector_id in energy_obj["sectors"]:
+			if not sector_id in sectors:
+				sectors[sector_id] = Sector(sector_id, obj["sectors"][sector_id]["name"])
+			efficiency = energy_obj["sectors"][sector_id]["efficiency"]
+			amount = energy_obj["sectors"][sector_id]["amount"]
+			sectors[sector_id].add_energy(id, energies[id])
+			energies[id].add_sector(sector_id, sectors[sector_id], efficiency, amount)
 
 if __name__ == "__main__":
 	main()

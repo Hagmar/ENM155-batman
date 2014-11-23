@@ -1,40 +1,36 @@
 class Sector:
-	def __init__(self, name):
+	def __init__(self, id, name):
 		self.name = name
+		self.id = id
 		self.energies = {}
 
-	def add_energy(self, name, energy):
-		self.energies[name] = energy
+	def add_energy(self, id, energy):
+		self.energies[id] = energy
 
 	def value(self):
-		return sum([self.energies[e].value() for e in self.energies])
+		return sum([e.value(self.id) for e in self.energies])
 
 class Energy:
-	def __init__(self, name, energy=0, quota=1.0, efficiency=1.0):
+	def __init__(self, id, name, energy=0):
 		self.name = name
+		self.id = id
+		self.energy = energy
 		self.sectors = {}
 		self.inputs = {}
-		self.energy = energy
-		self.quota = quota
-		self.efficiency = efficiency
+		self.subenergies = {}
 
-	def add_input(self, name, quota, efficiency):
-		new_energy = Energy(name, self.energy*quota/efficiency, quota, efficiency)
-		self.inputs[name] = new_energy
-		return new_energy
+	def add_input(self, id, energy, efficiency, quota):
+		self.inputs[id] = (energy, efficiency, quota)
 	
-	def add_existing_input(self, energy):
-		energy.energy = self.energy*energy.quota/energy.efficiency
-		self.inputs[energy.name] = energy
+	def add_subenergy(self, id, subenergy, efficiency, quota):
+		self.subenergies[id] = (subenergy, efficiency, quota)
+		
+	def add_sector(self, id, sector, efficiency, amount):
+		self.sectors[id] = (sector, efficiency, amount)
 
-	def add_sector(self, sector):
-		#self.sectors[name] = Sector(name)
-		self.sectors[name] = sector
-		self.sectors[name].add_energy(self.name, self)
-
-	def value(self, sector=None):
+	'''def value(self, sector=None):
 		if sector:
 			return self.sectors[sector].value()
 		else:
 			return self.energy * self.efficiency
-
+	'''
