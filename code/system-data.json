@@ -1,4 +1,4 @@
-{
+{ 	
 	"name": "Sveriges primärenergitillförsel",
 	"primary_energies": {
 		"fossil": {
@@ -165,13 +165,16 @@
 				}
 			}
 		}
-	}
+	},
 	"sectors": {
-		"residences":
+		"residences": {
 			"name": "Bostäder"
-		"transport":
-			"name": "Transport",
-		"industry":
+		},
+		"transport": {
+			"name": "Transport"
+		},
+		"industry": {
 			"name": "Industri"
+		}
 	}
 }
