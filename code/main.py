@@ -9,44 +9,48 @@ def main():
 		exit(1)
 	'''
 	with open("system-data.json", "r") as fp:
-		obj = json.load(fp)
+		json_obj = json.load(fp)
 
 	sectors = {}
-	energies = {}
-	primaryenergies = {}
+	primary_energies = {}
 	energy = {}
 
-	for energy in obj["primaryenergies"]:
-		primaryenergies[energy] = Energy(obj["primaryenergies"][energy]["name"])
 
-	energies = copy(primaryenergies)
-	sectors = build_model(obj)
+
+	sectors = build_model(json_obj["sectors"])
+
+	for energy in json_obj["primaryenergies"]:
+		energy_name = json_obj["primaryenergies"][energy]["name"]
+		primary_energies[energy_name] = 0
+
 	return sectors
-	#for energy in obj["sectors"][sector]["inputs"]:
-	#	energies[energy].add_input()
-	
-	#print(energies)
-	#print(sectors)
 
 def build_model(obj):
 	sectors = {}
-	for sector in obj["sectors"]:
-		sectors[sector] = Sector(obj["sectors"][sector]["name"])
-		
-		for input_name in obj["sectors"][sector]["inputs"]:
-			input = obj["sectors"][sector]["inputs"][input_name]
-			energy = Energy(input["name"], energy=input["energy"], efficiency=input["efficiency"])
-			sectors[sector].add_energy(input["name"], energy)
-			add_inputs(input, energy)
-	
+	for sector in obj:
+		sector_name = obj[sector]["name"]
+		sectors[sector_name] = Sector(sector_name)
+
+		for input_name in obj[sector]["inputs"]:
+			input = obj[sector]["inputs"][input_name]
+			energy = Energy(input["name"], sectors[sector_name	], energy=input["energy"]*100/input["efficiency"])
+			sectors[sector_name].add_energy(input["name"], energy)
+			add_outputs(input, energy)
+
 	return sectors
 
-def add_inputs(obj, parent):
+def add_outputs(obj, parent):
+	sector = parent.sector
 	if "inputs" in obj:
 		for input_name in obj["inputs"]:
-			input = obj["inputs"][input_name]
-			new_energy = parent.add_input(input["name"], quota=input["quota"], efficiency=input["efficiency"])
-			add_inputs(input, new_energy)
-
+			json_input = obj["inputs"][input_name]
+			input = None
+			if json_input["name"] in sector.energies:
+				input = sector.energies[json_input["name"]]
+			else:
+				input = Energy(json_input["name"], sector)
+				sector.energies[json_input["name"]] = input
+			input.add_output(parent.name, quota=json_input["quota"], efficiency=json_input["efficiency"])
+			add_outputs(json_input, input)
 if __name__ == "__main__":
 	main()

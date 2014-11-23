@@ -9,32 +9,45 @@ class Sector:
 	def value(self):
 		return sum([self.energies[e].value() for e in self.energies])
 
-class Energy:
-	def __init__(self, name, energy=0, quota=100.0, efficiency=100.0):
-		self.name = name
-		self.sectors = {}
-		self.inputs = {}
-		self.energy = energy
+class Edge:
+	def __init__(self, dest, quota=100.0, efficiency=100.0):
+		self.destination = dest
 		self.quota = quota
 		self.efficiency = efficiency
 
-	def add_input(self, name, quota, efficiency):
-		new_energy = Energy(name, self.energy*quota/efficiency, quota, efficiency)
-		self.inputs[name] = new_energy
-		return new_energy
-	
-	def add_existing_input(self, energy):
-		energy.energy = self.energy*energy.quota/energy.efficiency
-		self.inputs[energy.name] = energy
+	def __eq__(x, y):
+		return x.destination == y.destination
 
-	def add_sector(self, sector):
-		#self.sectors[name] = Sector(name)
-		self.sectors[name] = sector
-		self.sectors[name].add_energy(self.name, self)
+	def __hash__(self):
+		return self.destination.__hash__()
+
+class Energy:
+	def __init__(self, name, sector, energy=0):
+		self.name = name
+		self.sector = sector
+		self.energy = energy
+		self.outputs = []
+
+	def add_output(self, name, quota, efficiency):
+		if name in self.sector.energies:
+			energy = self.sector.energies[name]
+			edge = Edge(energy,quota,efficiency)
+			if not edge in self.outputs:
+				self.outputs.append(edge)
+			return energy
+		else:
+			new_energy = Energy(name, self.sector)
+			self.sector.energies[name] = new_energy
+			edge = Edge(self.sector.energies[name],quota,efficiency)
+			self.outputs.append(edge)
+			return new_energy
+
+	def calculate_energy(self):
+		self.energy = 0
 
 	def value(self, sector=None):
-		if sector:
-			return self.sectors[sector].value()
-		else:
-			return self.energy * self.quota / self.efficiency
+		value = self.energy
+		for edge in self.outputs:
+			value += edge.destination.value()*edge.quota/edge.efficiency
+		return value
 
