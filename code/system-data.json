@@ -27,26 +27,32 @@
 					"efficiency": 100,
 					"inputs": {
 						"fossil": {
+							"name": "Fossila bränslen",
 							"quota": 1.7,
 							"efficiency": 35
 						},
 						"bio": {
+							"name": "Biobränslen",
 							"quota": 3.8,
 							"efficiency": 30
 						},
 						"wind": {
+							"name": "Vindkraft",
 							"quota": 2.8,
 							"efficiency": 100
 						},
 						"nuclear": {
+							"name": "Kärnkraft",
 							"quota": 39.7,
 							"efficiency": 34
 						},
 						"water": {
+							"name": "Vattenkraft",
 							"quota": 47.8,
 							"efficiency": 100
 						},
 						"spill": {
+							"name": "Spillvärme",
 							"quota": 4.2,
 							"efficiency": 100
 						}
@@ -58,10 +64,12 @@
 					"efficiency": 100,
 					"inputs": {
 						"fossil": {
+							"name": "Fossila bränslen",
 							"quota": 15,
 							"efficiency": 80
 						},
 						"bio": {
+							"name": "Biobränslen",
 							"quota": 13,
 							"efficiency": 90
 						},
@@ -71,10 +79,12 @@
 							"efficiency": 90,
 							"inputs": {
 								"fossil": {
+									"name": "Fossila bränslen",
 									"quota": 10,
 									"efficiency": 75
 								},
 								"bio": {
+									"name":"Biobränslen",
 									"quota": 61,
 									"efficiency": 75
 								},
@@ -108,10 +118,12 @@
 					"efficiency": 20,
 					"inputs": {
 						"fossil": {
+							"name":"Fossila bränslen",
 							"quota": 94,
 							"efficiency": 90
 						},
 						"bio": {
+							"name":"Biobränslen",
 							"quota": 6,
 							"efficiency": 50
 						}
@@ -124,26 +136,31 @@
 			"inputs": {
 				"electric": {
 					"name": "El, specifik",
-					"energy": "53",
+					"energy": 53,
 					"efficiency": 100,
 					"inputs": {
 						"fossil": {
+							"name":"Fossila bränslen",
 							"quota": 1.7,
 							"efficiency": 35
 						},
 						"bio": {
+							"name":"Biobränslen",
 							"quota": 3.8,
 							"efficiency": 30
 						},
 						"wind": {
+							"name":"Vindkraft",
 							"quota": 2.8,
 							"efficiency": 100
 						},
 						"nuclear": {
+							"name":"Kärnkraft",
 							"quota": 39.7,
 							"efficiency": 34
 						},
 						"water": {
+							"name":"Vattenkraft",
 							"quota": 47.8,
 							"efficiency": 100
 						},
@@ -160,10 +177,12 @@
 					"efficiency": 100,
 					"inputs": {
 						"fossil": {
+							"name":"Fossila bränslen",
 							"quota": 56,
 							"efficiency": 90
 						},
 						"bio": {
+							"name":"Biobränslen",
 							"quota": 40,
 							"efficiency": 90
 						},
@@ -173,10 +192,12 @@
 							"efficiency": 90,
 							"inputs": {
 								"fossil": {
+									"name":"Fossila bränslen",
 									"quota": 10,
 									"efficiency": 75
 								},
 								"bio": {
+									"name":"Biobränslen",
 									"quota": 61,
 									"efficiency": 75
 								},
