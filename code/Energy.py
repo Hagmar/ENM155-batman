@@ -2,14 +2,15 @@ class Sector:
 	def __init__(self, id, name):
 		self.name = name
 		self.id = id
+		self.energy = 0
 		self.energies = {}
 
 	def add_energy(self, id, energy):
 		self.energies[id] = energy
 
 	def value(self):
-		return sum([self.energies[e].value(self.id) for e in self.energies])
-
+		return self.energy
+	
 class Energy:
 	def __init__(self, id, name, energy=0):
 		self.name = name

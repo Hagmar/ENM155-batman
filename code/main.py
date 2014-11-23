@@ -57,6 +57,7 @@ def add_sectors(obj, id, energy_obj, sectors, energies):
 			efficiency = energy_obj["sectors"][sector_id]["efficiency"]
 			amount = energy_obj["sectors"][sector_id]["amount"]
 			sectors[sector_id].add_energy(id, energies[id])
+			sectors[sector_id].energy += amount
 			energies[id].add_sector(sector_id, sectors[sector_id], efficiency, amount)
 
 def calculate_energies(energies, sectors):
