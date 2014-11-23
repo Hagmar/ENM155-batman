@@ -41,8 +41,10 @@ class Energy:
 		for subenergy_id in energy.subenergies:
 			link = energy.subenergies[subenergy_id]
 			if subenergy_id == id:
-				sum_created += link[0].energy * link[2]
-				sum_used += sum_created / link[1]
+				created_temp = link[0].energy * link[2]
+				sum_created += created_temp
+				sum_used += created_temp / link[1]
+				
 			else:
 				(used_temp, created_temp) = self.sum_value_energy(link[0], id)
 				created_temp = created_temp * link[2]
@@ -58,6 +60,7 @@ class Energy:
 		for sector_id in energy.sectors:
 			link = energy.sectors[sector_id]
 			if sector_id == id:
-				sum_created += link[2]
-				sum_used += sum_created / link[1]
+				created_temp = link[2]
+				sum_created += created_temp
+				sum_used += created_temp / link[1]
 		return (sum_used, sum_created)

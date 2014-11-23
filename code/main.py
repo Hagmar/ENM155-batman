@@ -14,7 +14,7 @@ def main():
 	(primaryenergies, energies, sectors) = build_model(obj)
 	
 	calculate_energies(energies, sectors)
-	return sectors
+	return primaryenergies, energies, sectors
 	
 def build_model(obj):
 	sectors = {}
