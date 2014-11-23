@@ -12,6 +12,8 @@ def main():
 		obj = json.load(fp)
 
 	(primaryenergies, energies, sectors) = build_model(obj)
+	
+	calculate_energies(energies, sectors)
 	return sectors
 	
 def build_model(obj):
@@ -56,6 +58,35 @@ def add_sectors(obj, id, energy_obj, sectors, energies):
 			amount = energy_obj["sectors"][sector_id]["amount"]
 			sectors[sector_id].add_energy(id, energies[id])
 			energies[id].add_sector(sector_id, sectors[sector_id], efficiency, amount)
+
+def calculate_energies(energies, sectors):
+	for sector_id in sectors:
+		sector = sectors[sector_id]
+		for energy_id in sector.energies:
+			energy = energies[energy_id]
+			energy_sector_link = energy.sectors[sector_id]
+			energy.energy += energy_sector_link[2]/energy_sector_link[1]
+	
+	for energy_id in energies:
+		energy = energies[energy_id]
+		if energy.energy != 0:
+			for input_id in energy.inputs:
+				input = energies[input_id]
+				energy_amount = energy.energy
+				link = energy.inputs[input.id]
+				efficiency = link[1]
+				amount = energy_amount * link[2] / efficiency
+				increase_energy(input, amount, energies)
+
+def increase_energy(energy, amount, energies):
+	energy.energy += amount
+	for input_id in energy.inputs:
+		input = energies[input_id]
+		energy_amount = energy.energy
+		link = energy.inputs[input.id]
+		efficiency = link[1]
+		amount_temp = amount * link[2] / efficiency
+		increase_energy(input, amount_temp, energies)
 
 if __name__ == "__main__":
 	main()
