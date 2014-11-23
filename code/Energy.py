@@ -10,7 +10,7 @@ class Sector:
 		return sum([self.energies[e].value() for e in self.energies])
 
 class Energy:
-	def __init__(self, name, energy=0, quota=100.0, efficiency=100.0):
+	def __init__(self, name, energy=0, quota=1.0, efficiency=1.0):
 		self.name = name
 		self.sectors = {}
 		self.inputs = {}
@@ -36,5 +36,5 @@ class Energy:
 		if sector:
 			return self.sectors[sector].value()
 		else:
-			return self.energy * self.quota / self.efficiency
+			return self.energy * self.efficiency
 

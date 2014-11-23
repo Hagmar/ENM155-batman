@@ -35,7 +35,7 @@ def build_model(obj):
 		
 		for input_name in obj["sectors"][sector]["inputs"]:
 			input = obj["sectors"][sector]["inputs"][input_name]
-			energy = Energy(input["name"], energy=input["energy"], efficiency=input["efficiency"])
+			energy = Energy(input["name"], energy=float(input["energy"])*100/input["efficiency"], efficiency=input["efficiency"]/100.0)
 			sectors[sector].add_energy(input["name"], energy)
 			add_inputs(input, energy)
 	
@@ -45,7 +45,7 @@ def add_inputs(obj, parent):
 	if "inputs" in obj:
 		for input_name in obj["inputs"]:
 			input = obj["inputs"][input_name]
-			new_energy = parent.add_input(input["name"], quota=input["quota"], efficiency=input["efficiency"])
+			new_energy = parent.add_input(input["name"], quota=input["quota"]/100.0, efficiency=input["efficiency"]/100.0)
 			add_inputs(input, new_energy)
 
 if __name__ == "__main__":
