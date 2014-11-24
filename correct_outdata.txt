@@ -32,5 +32,17 @@ With transmissionlosses {
 	(71.4916499923792, 43.03245816186556, 28.459191830513635)
 
 	>>> total
-	649.5614079134962
+	##stämmer inte 649.5614079134962
 }
+
+Correcta värden från facit:
+
+Kärnkraft: 173.8716
+
+Vattenkraft: 71.1779
+
+Vindkraft: 4.1694
+
+Fossila 201.4525
+
+Bio:	147.2058
