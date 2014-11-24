@@ -29,7 +29,7 @@ Sveriges totala primärenergitillförsel.
 \section{Metod}
 Modellen är nerbruten i tre delar, industri, transport och bostäder som är
 de olika sektorerna. För varje sektor så listas alla primärenergier som
-birdrar till respektive sektor. Varje primärenergi går sedan vidare till de
+bidrar till respektive sektor. Varje primärenergi går sedan vidare till de
 olika sekundärenergierna som den bidrar till. Varje sekundärenergi går
 vidare till sektorn, alternativ till en ny sekundärenergi som i sin tur går
 vidare till en sektor eller ytterligare en sekundärenergi.
@@ -42,7 +42,7 @@ vidare till en sektor eller ytterligare en sekundärenergi.
 
 
 \item Modellen är byggd så att det går att ta reda på tillförseln av varje
-	enskild primärenergi samt vilka typer av primärenergi, och mängedn,
+	enskild primärenergi samt vilka typer av primärenergi, och mängden,
 	varje enskild sektor använder. Det går även att räkna ut värden på
 	sekundärenergierna för varje sektor med hjälp av modellen.
 
@@ -139,7 +139,25 @@ enskild energikällas tillförsel.
 \newpage
 
 \section{Programkod}
-Bifoga koden
+\lstset{literate=%
+	{å}{{\r{a}}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+	{Å}{{\r{A}}}1
+	{Ä}{{\"A}}1
+	{Ö}{{\"O}}1,
+	tabsize=2,
+	breaklines=true
+}
+I denna fil finns klasserna för sektorer samt energier.
+\lstinputlisting[language=Python]{../code/Energy.py}
 
+\newpage
+Här är själva programmet.
+\lstinputlisting[language=Python]{../code/main.py}
+
+\newpage
+Och här är inputdatan till vårt program.
+\lstinputlisting[]{../code/system-data.json}
 \end{document}
 
