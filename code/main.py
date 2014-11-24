@@ -11,14 +11,9 @@ def main():
 	parser.add_argument("-s", "--sectors",action="store_true", dest="sectors", help=u"Visa alla sektorer")
 	parser.add_argument("-p", "--primary-energies",action="store_true", dest="primary", help=u"Visa alla primära energier")
 	parser.add_argument("-e", "--energies",action="store_true", dest="energies", help=u"Visa alla energier")
-	#bättre beskrivning pls
-	parser.add_argument("-v", "--value", metavar=("from_id", "to_id"),dest="values", type=str,nargs='*', help=u"Visa hur mycket av energin i energitypen man anger som går till det andra argument-id't man anger, och visar även hur mycket energi man får ut av denna energikälla")
+	parser.add_argument("-v", "--value", metavar=("from_id", "to_id"),dest="values", type=str,nargs='*', help=u"Visa hur mycket energi utav energitypen 'from_id' som används till energitypen eller sektorn 'to_id'. Visar även hur mycket energi man får ut i sekundärenergin eller sektorn efter alla energiomvandlingar och förluster. Anger man inte 'to_id' så tolkas detta som alla sektorer")
 	args = parser.parse_args()
 
-	'''if len(argv) < 2:
-		print("Usage: 'python3 %s <json-file>' json-file containing data about the system." % argv[0])
-		exit(1)
-	'''
 	with open("system-data.json", "r") as fp:
 		obj = json.load(fp)
 
