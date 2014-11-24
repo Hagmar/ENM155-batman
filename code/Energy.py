@@ -1,33 +1,68 @@
 class Sector:
-    def __init__(self, name):
-        self.name = name
-        self.energies = {}
+	def __init__(self, id, name):
+		self.name = name
+		self.id = id
+		self.energy = 0
+		self.energies = {}
 
-    def add_energy(self, name, energy):
-        self.energies[name] = energy
+	def add_energy(self, id, energy):
+		self.energies[id] = energy
 
-    def value(self):
-        return sum([self.energies[e].value() for e in self.energies])
-
+	def value(self):
+		return self.energy
+	
 class Energy:
-    def __init__(self, name, energy=0, quota=0, efficiency=0):
-        self.name = name
-        self.sectors = {}
-        self.inputs = {}
-        self.energy = energy
-        self.quota = quota
-        self.efficiency = efficiency
+	def __init__(self, id, name, energy=0):
+		self.name = name
+		self.id = id
+		self.energy = energy
+		self.sectors = {}
+		self.inputs = {}
+		self.subenergies = {}
 
-    def add_input(self, name, energy=0, quota=0, efficiency=0):
-        self.inputs[name] = Energy(name, energy, quota, efficiency)
+	def add_input(self, id, energy, efficiency, quota):
+		self.inputs[id] = (energy, efficiency, quota)
+	
+	def add_subenergy(self, id, subenergy, efficiency, quota):
+		self.subenergies[id] = (subenergy, efficiency, quota)
+		
+	def add_sector(self, id, sector, efficiency, amount):
+		self.sectors[id] = (sector, efficiency, amount)
 
-    def add_sector(self, name):
-        self.sectors[name] = Sector(name)
-        self.sectors[name].add_energy(self.name, self)
-
-    def value(self, sector=None):
-        if sector:
-            return self.sectors[sector].value()
-        else:
-            return (sum([self.inputs[i].value() for i in self.inputs]) + self.energy) * self.quota / self.efficiency
-
+	def value(self, id=None):
+		if id:
+			(sum_used, sum_created) = self.sum_value_energy(self, id)
+			return (sum_used, sum_created)
+		else:
+			(sum_used, sum_created) = self.sum_value_energy(self, 'all')
+			return (sum_used, sum_created)
+	
+	def sum_value_energy(self, energy, id):
+		sum_used = 0
+		sum_created = 0
+		for subenergy_id in energy.subenergies:
+			link = energy.subenergies[subenergy_id]
+			if subenergy_id == id:
+				created_temp = link[0].energy * link[2]
+				sum_created += created_temp
+				sum_used += created_temp / link[1]
+				
+			else:
+				(used_temp, created_temp) = self.sum_value_energy(link[0], id)
+				created_temp = created_temp * link[2]
+				used_temp = used_temp * link[2] / link[1]
+				sum_created += created_temp
+				sum_used += used_temp
+				
+		(sum_used, sum_created) = self.sum_value_sector(energy, id, sum_used, sum_created)
+		
+		return (sum_used, sum_created)
+	
+	def sum_value_sector(self, energy, id, sum_used, sum_created):
+		for sector_id in energy.sectors:
+			link = energy.sectors[sector_id]
+			if sector_id == id or id == 'all':
+				created_temp = link[2]
+				sum_created += created_temp
+				sum_used += created_temp / link[1]
+		return (sum_used, sum_created)
