@@ -28,25 +28,25 @@ def main():
 
 	if args.total:
 		total = 0
-		print u"Sveriges energiförbrukning: "
+		print(u"Sveriges energiförbrukning: ")
 		for e in primaryenergies.values():
 			total += e.energy
-			print u'{:20}{:10.3f} TWh'.format(e.name, e.energy)
-		print u"\n{:20}{:10.3f} TWh".format("Total energi", total)
+			print(u'{:20}{:10.3f} TWh'.format(e.name, e.energy))
+		print(u"\n{:20}{:10.3f} TWh".format("Total energi", total))
 	if args.sectors:
-		print '\n'.join([s.name for s in sectors.values()])
+		print('\n'.join([s.name for s in sectors.values()]))
 	if args.primary:
-		print '\n'.join([p.name for p in primaryenergies.values()])
+		print('\n'.join([p.name for p in primaryenergies.values()]))
 	if args.energies:
 		for e in energies.values():
 			print u"{:16} id: {:15}".format(e.name, e.id)
 	if args.values:
 		(used, created) = energies[args.values[0]].value(args.values[1])
 		if used==0:
-			print "Parametrarna gav inget resultat"
+			print("Parametrarna gav inget resultat")
 			exit()
-		print u"{:0.3f} THw av energin från {:s} går till sektorn {:s}.".format(used, energies[args.values[0]].name, sectors[args.values[1]].name)
-		print u"Med detta så får man ut {:0.3f} TWh till sektorn {:s}.".format(created, sectors[args.values[1]].name)
+		print(u"{:0.3f} THw av energin från {:s} går till sektorn {:s}.".format(used, energies[args.values[0]].name, sectors[args.values[1]].name))
+		print(u"Med detta så får man ut {:0.3f} TWh till sektorn {:s}.".format(created, sectors[args.values[1]].name))
 
 
 	return primaryenergies, energies, sectors
