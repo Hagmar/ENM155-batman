@@ -27,7 +27,7 @@ Sveriges totala primärenergitillförsel.
 
 
 \section{Metod}
-Modellen är nerbruten i tre delar, industri, transport och bostäder som är
+Modellen är nedbruten i tre delar, industri, transport och bostäder som är
 de olika sektorerna. För varje sektor så listas alla primärenergier som
 bidrar till respektive sektor. Varje primärenergi går sedan vidare till de
 olika sekundärenergierna som den bidrar till. Varje sekundärenergi går
@@ -37,9 +37,9 @@ vidare till en sektor eller ytterligare en sekundärenergi.
 \begin{itemize}
 \item Då vi har brutit ner modellen i sektorer så följer de inte diagrammet
 	i Figur 1 i lab PM. Istället så ger flödesschemat i Appendix
-	\ref{app:schema} en direkt bild utav strukturen på våran
-	implementation.
-
+	\ref{app:schema} en ungefärlig överskådlig bild utav strukturen på vår
+	implementation. Den egentliga anledningen till att vi skapade
+	flödesschemat var för att kunna förstå och diskutera problemet i grupp.
 
 \item Modellen är byggd så att det går att ta reda på tillförseln av varje
 	enskild primärenergi samt vilka typer av primärenergi, och mängden,
@@ -82,7 +82,7 @@ till fjärvärme etc.
 	E_{vatten} &= EL \cdot \frac{k_{vatten}}{\varphi_{vatten}} \\
 \intertext{Kärnkraft}
 	E_{karn} &= EL \cdot \frac{k_{karn}}{\varphi_{karn}} \\
-\intertext{Spillvärme (inte en riktig energi, men måste tas med i beräkningarna)}
+\intertext{Spillvärme (inte en ''riktig'' energi, men måste tas med i beräkningarna)}
 	E_{spill} &= EL \cdot \frac{k_{spill}}{\varphi_{spill}} \\
 \end{align*}
 
