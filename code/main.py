@@ -101,24 +101,13 @@ def calculate_energies(energies, sectors):
 		for energy_id in sector.energies:
 			energy = energies[energy_id]
 			energy_sector_link = energy.sectors[sector_id]
-			energy.energy += energy_sector_link[2]/energy_sector_link[1]
-	
-	for energy_id in energies:
-		energy = energies[energy_id]
-		if energy.energy != 0:
-			for input_id in energy.inputs:
-				input = energies[input_id]
-				energy_amount = energy.energy
-				link = energy.inputs[input.id]
-				efficiency = link[1]
-				amount = energy_amount * link[2] / efficiency
-				increase_energy(input, amount, energies)
+			amount = energy_sector_link[2]/energy_sector_link[1]
+			increase_energy(energy, amount, energies)
 
 def increase_energy(energy, amount, energies):
 	energy.energy += amount
 	for input_id in energy.inputs:
 		input = energies[input_id]
-		energy_amount = energy.energy
 		link = energy.inputs[input.id]
 		efficiency = link[1]
 		amount_temp = amount * link[2] / efficiency
