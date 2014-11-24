@@ -1,9 +1,20 @@
+#-*- encoding: utf-8 -*-
 from Energy import Sector, Energy
 from sys import argv, exit
 from copy import copy
 import json
+import argparse
 
 def main():
+	parser = argparse.ArgumentParser(description=u"Modellering av Sveriges energiförbrukning")
+	parser.add_argument("-t", "--total",action="store_true", dest="total", help=u"Visa totala energiförbrukningen för Sverige")
+	parser.add_argument("-s", "--sectors",action="store_true", dest="sectors", help=u"Visa alla sektorer")
+	parser.add_argument("-p", "--primary-energies",action="store_true", dest="primary", help=u"Visa alla primära energier")
+	parser.add_argument("-e", "--energies",action="store_true", dest="energies", help=u"Visa alla energier")
+	#bättre beskrivning pls
+	parser.add_argument("-v", "--value",dest="values", type=str,nargs=2, help=u"Visa hur mycket av energin i energitypen man anger som går till sektorn man anger, och visar även hur mycket energi man får ut av denna energikälla")
+	args = parser.parse_args()
+
 	'''if len(argv) < 2:
 		print("Usage: 'python3 %s <json-file>' json-file containing data about the system." % argv[0])
 		exit(1)
@@ -14,6 +25,30 @@ def main():
 	(primaryenergies, energies, sectors) = build_model(obj)
 	
 	calculate_energies(energies, sectors)
+
+	if args.total:
+		total = 0
+		print u"Sveriges energiförbrukning: "
+		for e in primaryenergies.values():
+			total += e.energy
+			print u'{:20}{:10.3f} TWh'.format(e.name, e.energy)
+		print u"\n{:20}{:10.3f} TWh".format("Total energi", total)
+	if args.sectors:
+		print '\n'.join([s.name for s in sectors.values()])
+	if args.primary:
+		print '\n'.join([p.name for p in primaryenergies.values()])
+	if args.energies:
+		for e in energies.values():
+			print u"{:16} id: {:15}".format(e.name, e.id)
+	if args.values:
+		(used, created) = energies[args.values[0]].value(args.values[1])
+		if used==0:
+			print "Parametrarna gav inget resultat"
+			exit()
+		print u"{:0.3f} THw av energin från {:s} går till sektorn {:s}.".format(used, energies[args.values[0]].name, sectors[args.values[1]].name)
+		print u"Med detta så får man ut {:0.3f} TWh till sektorn {:s}.".format(created, sectors[args.values[1]].name)
+
+
 	return primaryenergies, energies, sectors
 	
 def build_model(obj):
