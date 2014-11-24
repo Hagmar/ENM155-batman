@@ -3,12 +3,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
 \usepackage[lighttt]{lmodern}
+\usepackage{parskip}
 
 %\usepackage{amsmath}
 %\usepackage{amssymb}
 %\usepackage{amsthm}
 %\usepackage{listings}
-%\usepackage{parskip}
 %\usepackage{enumerate}
 %\usepackage{tikz}
 \usepackage{graphicx}
@@ -23,81 +23,102 @@ Magnus Hagmar \and Niclas Ogeryd \and Robert Nyquist}
 \maketitle
 
 \section{Introduktion}
-Denna rapport innehåller en enkel modell utav Sveriges energisystem som det ser ut idag.
-Modellen visar hur olika primäreneriger födelas på de tre sektorerna industri, transport och bostäder samt en uppskattning utav Sveriges totala primärenergitillförsel.
+Denna rapport innehåller en enkel modell utav Sveriges energisystem som det
+ser ut idag. Modellen visar hur olika primäreneriger födelas på de tre
+sektorerna industri, transport och bostäder samt en uppskattning utav
+Sveriges totala primärenergitillförsel.
 
 
 \section{Metod}
-Modellen är nerbruten i tre delar, industri, transport och bostäder som är de olika sektorerna.
-För varje sektor så listas alla primärenergier som birdrar till respektive sektor. Varje primärenergi går sedan vidare till de olika sekundärenergierna som den bidrar till. Varje sekundärenergi går vidare till sektorn, alternativ till en ny sekundärenergi som i sin tur går vidare till en sektor eller ytterligare en sekundärenergi. \\
-I Appendix B finns de matematiska formlerna för att räkna ut primarenergierna för varje enskild sektor.
+Modellen är nerbruten i tre delar, industri, transport och bostäder som är
+de olika sektorerna. För varje sektor så listas alla primärenergier som
+birdrar till respektive sektor. Varje primärenergi går sedan vidare till de
+olika sekundärenergierna som den bidrar till. Varje sekundärenergi går
+vidare till sektorn, alternativ till en ny sekundärenergi som i sin tur går
+vidare till en sektor eller ytterligare en sekundärenergi.
+
+I Appendix \ref{app:math} finns de matematiska formlerna för att räkna ut
+primarenergierna för varje enskild sektor.
 
 
 \begin{itemize}
-\item Då vi har brutit ner modellen i sektorer så följer de inte diagrammet i Figur 1 i lab PM.
-Istället så ger flödesschemat i Appendix A en direkt bild utav strukturen på våran implementation.
+\item Då vi har brutit ner modellen i sektorer så följer de inte diagrammet
+	i Figur 1 i lab PM. Istället så ger flödesschemat i Appendix
+	\ref{app:schema} en direkt bild utav strukturen på våran
+	implementation.
 
 
-\item Modellen är byggd så att det går att ta reda på tillförseln av varje enskild primärenergi samt vilka typer av primärenergi, och mängedn, varje enskild sektor använder.
-Det går även att räkna ut värden på sekundärenergierna för varje sektor med hjälp av modellen.
+\item Modellen är byggd så att det går att ta reda på tillförseln av varje
+	enskild primärenergi samt vilka typer av primärenergi, och mängedn,
+	varje enskild sektor använder. Det går även att räkna ut värden på
+	sekundärenergierna för varje sektor med hjälp av modellen.
 
-\item Då varje sektor innehåller alla primärenergier och sekundärenergier som bidrar så blir det väldigt enkelt att addera nya energier.
-Den nya energin läggs till i sektorn den bidrar till och går sedan vidare till en sekundärenerig eller sektorn.
+\item Då varje sektor innehåller alla primärenergier och sekundärenergier
+	som bidrar så blir det väldigt enkelt att addera nya energier. Den nya
+	energin läggs till i sektorn den bidrar till och går sedan vidare till
+	en sekundärenerig eller sektorn.
 \end{itemize}
-
-\newpage
 
 \section{Resultat}
 
-I tabbel \ref{resultat} visas den totala energitillförsel samt varje enskild energikällas tillförsel.
+I tabell \ref{resultat} visas den totala energitillförsel samt varje
+enskild energikällas tillförsel.
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{||l l||}
+	\begin{tabular}{| l | r |}
 		\hline
-		Energikälla & Tillförsel \\
-		\hline
-		\hline
-		Biobränsle & 140.34 TWh\\
+		Energikälla      & Tillförsel \\ \hline
+		Biobränsle       & 140.34 TWh \\
 		Fossila bränslen & 199.90 TWh \\
-		Vindkraft & 3.74 TWh\\
-		Vattenkraft & 63.81 TWh\\
-		Kärnkraft & 155.86 TWh\\
-		\hline
-		\hline
-		Totalt & 563.61TWh\\
-		\hline
+		Vindkraft        & 3.74 TWh \\
+		Vattenkraft      & 63.81 TWh \\
+		Kärnkraft        & 155.86 TWh \\ \hline
+		Totalt           & 563.61TWh \\ \hline
 	\end{tabular}
 	\caption{Resultat}
 	\label{resultat}
 \end{table}
 
 
+\newpage
 \appendix
+
 \section{Flödesschema}
 \begin{figure}[h!]
 	\centering 
- 		\includegraphics[scale = 0.2]{diagram.pdf}
-		\label{diagram}
+	\vspace*{-3cm}
+	\includegraphics[width=0.8\paperheight,angle=270]{diagram.pdf}
+	\label{app:schema}
+	\caption{Flödesschema över energianvändning i Sverige.}
 \end{figure}
-\section {Matematisk modell}
-\subsection{Transport}
-\begin{figure}[h!]
+
+
+\section {Matematisk modell} \label{app:math}
+\begin{figure}[!h]
 	\centering 
  		\includegraphics[scale = 0.75]{transport2.pdf}
-		\label{diagram}
+		\label{diagram2}
+		\caption{Transport}
 \end{figure}
-\subsection{Bostäder}
-\begin{figure}[h!]
+\newpage
+
+\begin{figure}[!h]
 	\centering 
  		\includegraphics[scale = 0.75]{homes2.pdf}
-		\label{diagram}
+		\label{diagram3}
+		\caption{Bostäder}
 \end{figure}
-\subsection{Industri}
-\begin{figure}[h!]
+\newpage
+
+\begin{figure}[!h]
 	\centering 
  		\includegraphics[scale = 0.75]{industri2.pdf}
-		\label{diagram}
+		\label{diagram4}
+		\caption{Industri}
 \end{figure}
+\newpage
+
+
 \section{Programkod}
 Bifoga koden
 
