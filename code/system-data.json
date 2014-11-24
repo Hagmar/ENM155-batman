@@ -129,7 +129,7 @@
 			"name": "Värmepump",
 			"energies": {
 				"district_heating": {
-					"efficiency": 2.25,
+					"efficiency": 2.5,
 					"quota": 0.22
 				}
 			}
