@@ -106,21 +106,21 @@
 			"name": "El",
 			"energies": {
 				"heat_pump": {
-					"efficiency": 1.00,
+					"efficiency": 0.90,
 					"quota": 1.00
 				},
 				"heating_residences": {
-					"efficiency": 1.00,
+					"efficiency": 0.90,
 					"quota": 0.23
 				}
 			},
 			"sectors": {
 				"residences": {
-					"efficiency": 1.00,
+					"efficiency": 0.90,
 					"amount": 55
 				},
 				"industry": {
-					"efficiency": 1.00,
+					"efficiency": 0.90,
 					"amount": 53
 				}
 			}
@@ -129,7 +129,7 @@
 			"name": "Värmepump",
 			"energies": {
 				"district_heating": {
-					"efficiency": 2.50,
+					"efficiency": 2.25,
 					"quota": 0.22
 				}
 			}
@@ -138,11 +138,11 @@
 			"name": "Fjärrvärme",
 			"energies": {
 				"heating_residences": {
-					"efficiency": 0.90,
+					"efficiency": 0.81,
 					"quota": 0.49
 				},
 				"heating_industry": {
-					"efficiency": 0.90,
+					"efficiency": 0.81,
 					"quota": 0.04
 				}
 			}
