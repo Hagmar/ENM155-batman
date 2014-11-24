@@ -23,7 +23,12 @@ def main():
 		obj = json.load(fp)
 
 	(primaryenergies, energies, sectors) = build_model(obj)
-	
+	id_to_name = {}
+	for e in energies:
+		id_to_name[energies[e].id] = energies[e].name
+	for s in sectors:
+		id_to_name[sectors[s].id] = sectors[s].name
+
 	calculate_energies(energies, sectors)
 
 	if args.total:
@@ -48,8 +53,8 @@ def main():
 			output2= u"Med detta så får man ut {:0.3f} TWh till alla sektorer.".format(created)
 		if length == 2:
 			(used, created) = energies[args.values[0]].value(args.values[1])
-			output = u"{:0.3f} THw av energin från {:s} går till {:s}.".format(used, energies[args.values[0]].name, sectors[args.values[1]].name)
-			output2= u"Med detta så får man ut {:0.3f} TWh till {:s}.".format(created, sectors[args.values[1]].name)
+			output = u"{:0.3f} THw av energin från {:s} går till {:s}.".format(used, energies[args.values[0]].name, id_to_name[args.values[1]])
+			output2= u"Med detta så får man ut {:0.3f} TWh till {:s}.".format(created, id_to_name[args.values[1]])
 		if used==0:
 			print("Parametrarna gav inget resultat")
 			exit()
