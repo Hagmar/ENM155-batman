@@ -34,7 +34,8 @@ class Energy:
 			(sum_used, sum_created) = self.sum_value_energy(self, id)
 			return (sum_used, sum_created)
 		else:
-			return 0
+			(sum_used, sum_created) = self.sum_value_energy(self, 'all')
+			return (sum_used, sum_created)
 	
 	def sum_value_energy(self, energy, id):
 		sum_used = 0
@@ -60,7 +61,7 @@ class Energy:
 	def sum_value_sector(self, energy, id, sum_used, sum_created):
 		for sector_id in energy.sectors:
 			link = energy.sectors[sector_id]
-			if sector_id == id:
+			if sector_id == id or id == 'all':
 				created_temp = link[2]
 				sum_created += created_temp
 				sum_used += created_temp / link[1]
