@@ -33,14 +33,14 @@ def main():
 			total += e.energy
 			print(u'{:20}{:10.3f} TWh'.format(e.name, e.energy))
 		print(u"\n{:20}{:10.3f} TWh".format("Total energi", total))
-	if args.sectors:
+	elif args.sectors:
 		print('\n'.join([s.name for s in sectors.values()]))
-	if args.primary:
+	elif args.primary:
 		print('\n'.join([p.name for p in primaryenergies.values()]))
-	if args.energies:
+	elif args.energies:
 		for e in energies.values():
 			print u"{:16} id: {:15}".format(e.name, e.id)
-	if args.values:
+	elif args.values:
 		length = (len(args.values))
 		if length == 1:
 			(used, created) = energies[args.values[0]].value()
@@ -55,6 +55,8 @@ def main():
 			exit()
 		print output
 		print output2
+	else:
+		parser.print_help()
 
 	return primaryenergies, energies, sectors
 	
