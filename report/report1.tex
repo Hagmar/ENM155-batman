@@ -4,13 +4,10 @@
 \usepackage[swedish]{babel}
 \usepackage[lighttt]{lmodern}
 \usepackage{parskip}
-
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-%\usepackage{amsthm}
-%\usepackage{listings}
-%\usepackage{enumerate}
-%\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
 \usepackage{graphicx}
 
 \author{Andreas Hagesjö \and Daniel Pettersson \and
@@ -37,10 +34,6 @@ olika sekundärenergierna som den bidrar till. Varje sekundärenergi går
 vidare till sektorn, alternativ till en ny sekundärenergi som i sin tur går
 vidare till en sektor eller ytterligare en sekundärenergi.
 
-I Appendix \ref{app:math} finns de matematiska formlerna för att räkna ut
-primarenergierna för varje enskild sektor.
-
-
 \begin{itemize}
 \item Då vi har brutit ner modellen i sektorer så följer de inte diagrammet
 	i Figur 1 i lab PM. Istället så ger flödesschemat i Appendix
@@ -59,21 +52,72 @@ primarenergierna för varje enskild sektor.
 	en sekundärenerig eller sektorn.
 \end{itemize}
 
+\subsection{Matematisk modell}
+Vi definerar ett utryck för att beräkna elen i transport samt
+industrisektorn, som vi sedan referenserar för att minska längden på det
+totala uttrycket.
+
+I våra ekvationer betyder $E_{fe}$ energin från fossila bränslen omvandlat
+till el. Samma sätt med $E_{fjv}$, fjärrvärme till värme, $E_{ffj}$, fossil
+till fjärvärme etc.
+
+\newpage
+
+\subsection{Bostäder}
+\begin{align*}
+	EL &= \frac{\frac{E_v k_{ev}}{\varphi_{ev}} + \frac{E_v k_{fjv}
+	k_{vp}}{\varphi_{fjv} \varphi_{vp} \varphi_{trans}} +
+	E_e}{\varphi_e \varphi_{trans}} \\
+\intertext{Fossila bränslen}
+	E_f &= \frac{E_v k_{fv}}{\varphi_{fv}} + \frac{E_v k_{fjv}
+	k_{ffj}}{\varphi_{fjv} \varphi_{ffj} \varphi_{trans}} + EL
+	\cdot \frac{k_{fe}}{\varphi_{fe}} \\
+\intertext{Biobränslen}
+	E_b &= \frac{E_v k_{bv}}{\varphi_{bv}} + \frac{E_v k_{fjv}
+	k_{bfj}}{\varphi_{fjv} \varphi_{bfj} \varphi_{trans}} + EL
+	\cdot \frac{k_{be}}{\varphi_{be}} \\
+\intertext{Vindkraft}
+	E_{vind} &= EL \cdot \frac{k_{vind}}{\varphi_{vind}} \\
+\intertext{Vattenkraft}
+	E_{vatten} &= EL \cdot \frac{k_{vatten}}{\varphi_{vatten}} \\
+\intertext{Kärnkraft}
+	E_{karn} &= EL \cdot \frac{k_{karn}}{\varphi_{karn}} \\
+\intertext{Spillvärme (inte en riktig energi, men måste tas med i beräkningarna)}
+	E_{spill} &= EL \cdot \frac{k_{spill}}{\varphi_{spill}} \\
+\end{align*}
+
+
+\subsection{Transport}
+\begin{align*}
+	E_f &= \frac{E_t k_f}{\varphi_f \varphi_{drivmedel}} \\
+	E_b &= \frac{E_t k_b}{\varphi_b \varphi_{drivmedel}} \\
+\end{align*}
+
+
+\subsection{Industri}
+Industrisektorn skiljer sig från bostadssektorn genom att det inte finns
+någon eluppvärmning, annars är de två sektorerna lika.
+\begin{align*}
+	EL &= \frac{\frac{E_v k_{ev}}{\varphi_{ev}} + E_e}{\varphi_e
+	\varphi_{trans}} \\
+\end{align*}
+
+
 \section{Resultat}
 
-I tabell \ref{resultat} visas den totala energitillförsel samt varje
+I tabell \ref{resultat} visas den totala energitillförseln samt varje
 enskild energikällas tillförsel.
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{| l | r |}
 		\hline
 		Energikälla      & Tillförsel \\ \hline
-		Biobränsle       & 140.34 TWh \\
-		Fossila bränslen & 199.90 TWh \\
-		Vindkraft        & 3.74 TWh \\
-		Vattenkraft      & 63.81 TWh \\
-		Kärnkraft        & 155.86 TWh \\ \hline
-		Totalt           & 563.61TWh \\ \hline
+		Biobränsle       & XX TWh \\
+		Fossila bränslen & XX TWh \\
+		Vindkraft        & XX TWh \\
+		Vattenkraft      & XX TWh \\
+		Kärnkraft        & XX TWh \\ \hline
+		Totalt           & XX TWh \\ \hline
 	\end{tabular}
 	\caption{Resultat}
 	\label{resultat}
@@ -86,38 +130,13 @@ enskild energikällas tillförsel.
 \section{Flödesschema}
 \begin{figure}[h!]
 	\centering 
-	\vspace*{-3cm}
-	\includegraphics[width=0.8\paperheight,angle=270]{diagram.pdf}
+	\vspace*{0cm}
+	\includegraphics[width=0.6\paperheight,angle=270]{diagram.pdf}
 	\label{app:schema}
 	\caption{Flödesschema över energianvändning i Sverige.}
 \end{figure}
 
-
-\section {Matematisk modell} \label{app:math}
-\begin{figure}[!h]
-	\centering 
- 		\includegraphics[scale = 0.75]{transport2.pdf}
-		\label{diagram2}
-		\caption{Transport}
-\end{figure}
 \newpage
-
-\begin{figure}[!h]
-	\centering 
- 		\includegraphics[scale = 0.75]{homes2.pdf}
-		\label{diagram3}
-		\caption{Bostäder}
-\end{figure}
-\newpage
-
-\begin{figure}[!h]
-	\centering 
- 		\includegraphics[scale = 0.75]{industri2.pdf}
-		\label{diagram4}
-		\caption{Industri}
-\end{figure}
-\newpage
-
 
 \section{Programkod}
 Bifoga koden
