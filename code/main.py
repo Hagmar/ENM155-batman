@@ -12,7 +12,7 @@ def main():
 	parser.add_argument("-p", "--primary-energies",action="store_true", dest="primary", help=u"Visa alla primära energier")
 	parser.add_argument("-e", "--energies",action="store_true", dest="energies", help=u"Visa alla energier")
 	#bättre beskrivning pls
-	parser.add_argument("-v", "--value",dest="values", type=str,nargs=2, help=u"Visa hur mycket av energin i energitypen man anger som går till sektorn man anger, och visar även hur mycket energi man får ut av denna energikälla")
+	parser.add_argument("-v", "--value", metavar=("from_id", "to_id"),dest="values", type=str,nargs='*', help=u"Visa hur mycket av energin i energitypen man anger som går till det andra argument-id't man anger, och visar även hur mycket energi man får ut av denna energikälla")
 	args = parser.parse_args()
 
 	'''if len(argv) < 2:
@@ -41,13 +41,20 @@ def main():
 		for e in energies.values():
 			print u"{:16} id: {:15}".format(e.name, e.id)
 	if args.values:
-		(used, created) = energies[args.values[0]].value(args.values[1])
+		length = (len(args.values))
+		if length == 1:
+			(used, created) = energies[args.values[0]].value()
+			output = u"{:0.3f} THw av energin från {:s} går till alla sektorer.".format(used, energies[args.values[0]].name)
+			output2= u"Med detta så får man ut {:0.3f} TWh till alla sektorer.".format(created)
+		if length == 2:
+			(used, created) = energies[args.values[0]].value(args.values[1])
+			output = u"{:0.3f} THw av energin från {:s} går till {:s}.".format(used, energies[args.values[0]].name, sectors[args.values[1]].name)
+			output2= u"Med detta så får man ut {:0.3f} TWh till {:s}.".format(created, sectors[args.values[1]].name)
 		if used==0:
 			print("Parametrarna gav inget resultat")
 			exit()
-		print(u"{:0.3f} THw av energin från {:s} går till sektorn {:s}.".format(used, energies[args.values[0]].name, sectors[args.values[1]].name))
-		print(u"Med detta så får man ut {:0.3f} TWh till sektorn {:s}.".format(created, sectors[args.values[1]].name))
-
+		print output
+		print output2
 
 	return primaryenergies, energies, sectors
 	
