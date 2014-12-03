@@ -28,7 +28,7 @@ digraph {
 		fossil -> district_heating:fossil [label = "75%"];
 		bio -> district_heating:bio [label = "75%"];
 		spill -> district_heating:spill [label = "100%"];
-		pump -> district_heating:pump [label = "250% * transmission 90%"];
+		pump -> district_heating:pump [label = "250%"];
 
 		fossil -> heating:fossil [label = "90%"];
 		bio -> heating:bio [label = "90%"];
