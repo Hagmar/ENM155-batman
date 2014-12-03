@@ -77,19 +77,6 @@
 					"quota": 0.028
 				}
 			}
-		},
-		"spill": {
-			"name": "Spillvärme",
-			"energies": {
-				"electric": {
-					"efficiency": 1.00,
-					"quota": 0.042
-				},
-				"district_heating": {
-					"efficiency": 1.00,
-					"quota": 0.07
-				}
-			}
 		}
 	},
 	"energies": {
