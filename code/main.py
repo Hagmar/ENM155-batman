@@ -34,7 +34,9 @@ def main():
 			print(u'{:20}{:10.4f} TWh'.format(e.name, e.energy))
 		print(u"\n{:20}{:10.4f} TWh".format("Total energi", total))
 	elif args.sectors:
-		print('\n'.join([s.name for s in sectors.values()]))
+		for s in sectors.values():
+			print u"{:16} id: {:15}".format(s.name, s.id)
+
 	elif args.primary:
 		print('\n'.join([p.name for p in primaryenergies.values()]))
 	elif args.energies:
