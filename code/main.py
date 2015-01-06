@@ -44,7 +44,6 @@ def main():
 			print u"{:16} id: {:15}".format(e.name, e.id)
 	elif args.values:
 		# Check for invalid energies or sectors
-		print sectors
 		for value in args.values:
 			if not (value in energies or value in sectors):
 				print u"\"{:s}\" är inte en giltig energityp eller sektor.".format(value)
