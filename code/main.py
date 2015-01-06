@@ -12,10 +12,15 @@ def main():
 	parser.add_argument("-p", "--primary-energies",action="store_true", dest="primary", help=u"Visa alla primära energier")
 	parser.add_argument("-e", "--energies",action="store_true", dest="energies", help=u"Visa alla energier")
 	parser.add_argument("-v", "--value", metavar=("from_id", "to_id"),dest="values", type=str,nargs='*', help=u"Visa hur mycket energi utav energitypen 'from_id' som används till energitypen eller sektorn 'to_id'. Visar även hur mycket energi man får ut i sekundärenergin eller sektorn efter alla energiomvandlingar och förluster. Anger man inte 'to_id' så tolkas detta som alla sektorer")
+	parser.add_argument("-f", "--file", dest="file", default="system-data.json", help=u"Visa alla sektorer")
 	args = parser.parse_args()
 
-	with open("system-data.json", "r") as fp:
-		obj = json.load(fp)
+	try:
+		with open(args.file, "r") as fp:
+			obj = json.load(fp)
+	except:
+		print u"File does not exist or does not contain valid json data."
+		exit()
 
 	(primaryenergies, energies, sectors) = build_model(obj)
 	id_to_name = {}
