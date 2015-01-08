@@ -8,3 +8,7 @@
 *.fls
 *.log
 *.gz
+*.nav
+*.out
+*.snm
+*.toc
