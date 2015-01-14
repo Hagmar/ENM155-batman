@@ -9,6 +9,11 @@
 \usepackage{amsthm}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{biblatex}
+\usepackage{csquotes}
+
+
+\addbibresource{referenser.bib}
 
 \author{Andreas Hagesjö \and Daniel Pettersson \and
 Magnus Hagmar \and Niclas Ogeryd \and Robert Nyquist}
@@ -41,38 +46,26 @@ ansträngningar och tekniska utvecklingar.
 För personbilar så kommer eldrift att ersätta stor del av bensin- och
 dieseldrift. Då elbilar är effektivare än bilar med förbränningsmotorer så
 kommer bytet till elbilar medföra att mängden energi som behöves för att
-driva bilflottan att minska\footnote{Ett fossilbränsleoberoende
-transportsystem år 2030 – Ett visionsprojekt för Svensk Energi och Elforsk,
-sida 25}. Då stor del utav elbilarna som säljs idag är laddhybrider,
-Mitsubishi Outlander står ensam för nästan 30 procent av det laddbara
-beståndet i Sverige, så kommer den typen av bilar fortfarande rulla 2030
-och därmed fortfarande använda fossilt bränsle. \\
-\footnote{Ökningen av laddbara fordon avtar,
- 2014-12-03, \\
-http://powercircle.org/nyhet/okningen-av-laddbara-fordon-avtar-3 (hämtad
-2015-01-06)}.
-I nuläget så är det endast
-7800 av de cirka 4.5 miljoner bilarna i sverige som kan drivas på el
-\footnote {Fordonsstatistik 2014, Transportstyrelsen. \\
-https://www.transportstyrelsen.se/sv/Press/Statistik/Vag/Fordonsstatistik/
-Fordonsstatistik-juni-2014/ }. Det kommer att diskuteras huruvida 
+driva bilflottan att minska \cite[s.~25]{elforsk}. Då stor del utav
+elbilarna som säljs idag är laddhybrider, Mitsubishi Outlander står ensam
+för nästan 30 procent av det laddbara beståndet i Sverige, så kommer den
+typen av bilar fortfarande rulla 2030 och därmed fortfarande använda
+fossilt bränsle \cite{laddbarafordon}. I nuläget så är det endast
+7800 av de cirka 4.5 miljoner bilarna i sverige som kan drivas på
+el \cite{fordonsstatistik}.  Det kommer att diskuteras huruvida 
 utvecklingen kan ske till 2030 för att se till att eldrivna bilar kommer
 att bli en mer betydande del av fordonsflottan gentemot hur det ser ut
 idag, och att efterfrågan för elbilarna kommer att öka drastiskt.
 Regeringen har i nuläget infört styrmedel för att gynna elbilar
 (och de absolut bästa gasbilarna), med en supermiljöbilspremie, som innebär
 att om en bils maximala koldioxidsläpp per kilometer är 50 gram, så kan denna
-premie tilldelas\footnote{Ekonomiska Styrmedel, \\
-http://www.biogasportalen.se/BliProducentAvBiogas/Ekonomi/Stodochstyrmedel}
-
+premie tilldelas \cite{ekonomiskastyrmedel}.
 En fråga man kan ställa sig är huruvida det kommer gå att producera den
 extra mängden el som behöves för att utöka beståndet med elbilar. Som det
 ser ut nu så skulle bilflottan behöva runt 53 TWh/år år 2030 utan några
-åtgärder\footnote{Ett fossilbränsleoberoende transportsystem år 2030 – Ett
-visionsprojekt för Svensk Energi och Elforsk, tabell 3 sida 24}, men med
+åtgärder \cite[s.~24]{elforsk}, men med
 den effektiviseringen som kommer med elmotorer, mellan 2,5 och 3 gånger så
-effektiv\footnote{Ett fossilbränsleoberoende transportsystem år 2030 – Ett
-visionsprojekt för Svensk Energi och Elforsk, sida 29}, så kommer den
+effektiv \cite[s.~29]{elforsk}, så kommer den
 mängden energi att minska så pass mycket att det inte blir nödvändigt med
 så stor ökning utav elproduktionen.
 
@@ -84,12 +77,12 @@ stort och tungt fordon. Och eftersom de flesta tunga fordon idag körs på
 diesel, kan ett bränslebyte till biodiesel gå relativt smärtfritt.
 
 Samma sak är det med bensin och dieselbilar som säljs idag, eftersom
-medelåldern på en personbil i Sverige är 9 år\footnote{pls insert
-källa} så betyder det att det kommer köras bilar år 2030 som är sålda idag,
+medelåldern på en personbil i Sverige är 9 år \cite[s.~17]{elforsk} så
+betyder det att det kommer köras bilar år 2030 som är sålda idag,
 och då måste vi ha ett sätt att med så låg kostnad som möjligt, konvertera
 dessa till fossilfria alternativ. Där ligger biobränslen närmast, en bil
 som idag körs på diesel, kan som tidigare sagt, relativt smärtfritt köras
-på biodiesel istället\footnote{källa på biodiesel i dieselbil}. Lite
+på biodiesel istället \cite{statoil}. Lite
 svårare bil det däremot med en bensindriven bil. Där kan man bli tvungen
 att göra lite större ändringar i motorn, vilket självklart resulterar i en
 högre kostnad för konverteringen, men det är mycket möjligt att göra en sån
@@ -99,28 +92,30 @@ konverteras och då framföras oberoende av fossila bränslen.
 
 För att främja biobränslet i Sverige har man i nuläget infört ekonomiska styrmedel 
 genom att låta allt biobränsle genom att låta dess skatt vara
-avdragsgill.
-\footnote{Ekonomiska styrmedel, \\
-http://www.biogasportalen.se/BliProducentAvBiogas/Ekonomi/Stodochstyrmedel}.
+avdragsgill \cite{ekonomiskastyrmedel}.
 
 Man får dock vara försiktig med just biobränslen, det finns inte
 biobränslen i överflöd, och skulle andra länder få en ökad efterfrågan på
 biobränslen kan det få priset att rusa i taket. Detta kan medföra stora
-negativa effekter så som \emph{land-grabbing}\footnote{Bioenergi, Oskar
-Englund, Energi och Miljö Fysisk resursteori, Chalmers.}, ökade matpriser i
+negativa effekter så som \emph{land-grabbing} \cite{bioenergi}, ökade matpriser i
 fattigare länder etc. vilket man då kan reglera genom att man har kvar
 möjligheten att tillfälligt köra på fossila bränslen, för att minska
 Sveriges efterfrågan på biobränslen dels ur bränslesäkerhet men även
 miljömässigt och kanske även ur ett etiskt perspektiv.
 
 \subsection{Vätgas}
-Bilar som drivs på vätgas ligger för tillfället bakom både elbilar och bilar som drivs på biobränsle och därför räknar vi med att år 2030 så består inte stora delar utav bilflottan av bilar som drivs av vätgas. Bilarna produceras fortfarande i små mängder och i sverige finns endast en laddningsstation för tillfället\footnote{Första macken för vätgas, 2014-06-10, \\
-http://www.skanskan.se/article/20140610/MALMO/140609539/-/forsta-macken-for-vatgas (hämtad 2015-01-06)}.
+Bilar som drivs på vätgas ligger för tillfället bakom både elbilar och
+bilar som drivs på biobränsle och därför räknar vi med att år 2030 så
+består inte stora delar utav bilflottan av bilar som drivs av vätgas.
+Bilarna produceras fortfarande i små mängder och i sverige finns endast en
+laddningsstation för tillfället \cite{macken}.
 Bilarna är dessutom fortfarande för dyra för att få ett stort genomslag än så länge. Bilar som drivs på vätgas har har stor potential i framtiden men 2030 så kommer de inte finnas i lika stor mäng som elbilar och biobränsle bilar.
 
 \subsection{Kärnkraft}
 Regerigen har upphävt förbudet mot ny kärnkraft i Sverige. Detta har lett till intresse till ersätta gamla reaktorer med nya, bland annat i Oskarshamn, som kan producera mer el.
-Dessutom så kan man räkna med att samtliga aktiva reaktorer i Sverige kommer att producera en större mängd el om 15 år än vad de gör nu\footnote{Kärnkraft - nya reaktorer och ökat skadeståndsansvar, SOU 2009:88  tabell 2.2 sida80}. Därför räknar vi med att kärnkraften år 2030 har möjlighet att täcka upp för det ökade behovet utav elproduktion som en ökad mängd elbilar medför.
+Dessutom så kan man räkna med att samtliga aktiva reaktorer i Sverige
+kommer att producera en större mängd el om 15 år än vad de gör nu
+\cite[s.~80]{karnkraft}. Därför räknar vi med att kärnkraften år 2030 har möjlighet att täcka upp för det ökade behovet utav elproduktion som en ökad mängd elbilar medför.
 
 \section{Metod}
 Vi har utgått från den angivna modellen i tidigare uppgift. Med den som
@@ -169,5 +164,6 @@ Tyskland, Japan och Karlifonien är de platser där uppbyggnaden utav vätgassta
 Något som talar för att utvecklingen för vätgasbilar skall gå framåt i snabbt takt är att det forskars på att använda vätgas som lagring för energi från exempelvis vindkraftverk. Detta skulle göra vindkraft mindre beroende av andra energikällor när det inte blåser. Utvecklingen av att binda energi i vätgas har alltså fördelar i andra områden än transport vilket gör att forskning inom området är lönsamt för flera. Det finns även industrier som har vätgas som spillvara som man kan ta vara å för att få vätgas direkt utan några energiförluster vid tillverkningen.
 
 
+\printbibliography
 \end{document}
 
