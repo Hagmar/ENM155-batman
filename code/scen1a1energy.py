@@ -13,7 +13,7 @@ kaern = [174.4988,179.60]
 
 p1 = plt.bar(ind, vat, width, color='#ff0000')
 p2 = plt.bar(ind, bio, width, color='#33ff33', bottom=vat)
-p3 = plt.bar(ind, fos, width, color='#3333ff', bottom=[vat[j] + bio[j] for j in range(len(vat))])
+p3 = plt.bar(ind, fos, width, color='#e6d822', bottom=[vat[j] + bio[j] for j in range(len(vat))])
 p4 = plt.bar(ind, vind, width, color='#aad8e6', bottom=[vat[j] + bio[j] + fos[j] for j in range(len(vat))])
 p5 = plt.bar(ind, kaern, width, color='#FF6600', bottom=[vat[j] + bio[j] + fos[j] + vind[j] for j in range(len(vat))])
 

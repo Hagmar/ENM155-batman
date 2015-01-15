@@ -13,8 +13,8 @@ vaet = [0,9.4]
 
 p1 = plt.bar(ind, fos, width, color='#e6d822')
 p2 = plt.bar(ind, bio, width, color='#33ff33', bottom=fos)
-p3 = plt.bar(ind, el, width, color='#ff3333', bottom=[fos[j] +bio[j] for j in range(len(fos))])
-p4 = plt.bar(ind, vaet, width, color='#3333ff', bottom=[fos[j] +bio[j] + el[j] for j in range(len(fos))])
+p3 = plt.bar(ind, el, width, color='#3333ff', bottom=[fos[j] +bio[j] for j in range(len(fos))])
+p4 = plt.bar(ind, vaet, width, color='#ff3333', bottom=[fos[j] +bio[j] + el[j] for j in range(len(fos))])
 
 ax.set_xlim(-0.3, 1.5)
 ax.set_ylabel('TWh')
