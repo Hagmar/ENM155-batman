@@ -18,7 +18,7 @@
 				},
 				"district_heating": {
 					"efficiency": 0.75,
-					"quota": 0.10
+					"quota": 0.102
 				},
 				"electric": {
 					"efficiency": 0.35,
@@ -43,7 +43,7 @@
 				},
 				"district_heating": {
 					"efficiency": 0.75,
-					"quota": 0.61
+					"quota": 0.658
 				},
 				"electric": {
 					"efficiency": 0.30,
@@ -117,7 +117,7 @@
 			"energies": {
 				"district_heating": {
 					"efficiency": 2.5,
-					"quota": 0.22
+					"quota": 0.24
 				}
 			}
 		},
