@@ -1,0 +1,171 @@
+{ 	
+	"name": "Sveriges primärenergitillförsel",
+	"primary_energies": {
+		"fossil": {
+			"name": "Fossila bränslen",
+			"energies": {
+				"heating_residences": {
+					"efficiency": 0.80,
+					"quota": 0.15
+				},
+				"heating_industry": {
+					"efficiency": 0.90,
+					"quota": 0.60
+				},
+				"district_heating": {
+					"efficiency": 0.75,
+					"quota": 0.102
+				},
+				"electric": {
+					"efficiency": 0.35,
+					"quota": 0.0575
+				},
+				"fuel": {
+					"efficiency": 0.9,
+					"quota": 0.40
+				}
+			}
+		},
+		"bio": {
+			"name": "Biobränslen",
+			"energies": {
+				"fuel": {
+					"efficiency": 0.50,
+					"quota": 0.60
+				},
+				"heating_residences": {
+					"efficiency": 0.80,
+					"quota": 0.13
+				},
+				"heating_industry": {
+					"efficiency": 0.90,
+					"quota": 0.36
+				},
+				"district_heating": {
+					"efficiency": 0.75,
+					"quota": 0.658
+				},
+				"electric": {
+					"efficiency": 0.30,
+					"quota": 0.00
+				}
+			}
+		},
+		"nuclear": {
+			"name": "Kärnkraft",
+			"energies": {
+				"electric": {
+					"efficiency": 0.34,
+					"quota": 0.40
+				}
+			}
+		},
+		"water": {
+			"name": "Vattenkraft",
+			"energies": {
+				"electric": {
+					"efficiency": 1.00,
+					"quota": 0.478
+				}
+			}
+		},
+		"wind": {
+			"name": "Vindkraft",
+			"energies": {
+				"electric": {
+					"efficiency": 1.00,
+					"quota": 0.065
+				}
+			}
+		}
+	},
+	"energies": {
+		"fuel": {
+			"name": "Drivmedel",
+			"sectors": {
+				"transport": {
+					"efficiency": 0.28,
+					"amount": 14
+				}
+			}
+		},
+		"electric": {
+			"name": "El",
+			"energies": {
+				"heat_pump": {
+					"efficiency": 0.90,
+					"quota": 1.00
+				},
+				"heating_residences": {
+					"efficiency": 0.90,
+					"quota": 0.24
+				}
+			},
+			"sectors": {
+				"residences": {
+					"efficiency": 0.90,
+					"amount": 55
+				},
+				"industry": {
+					"efficiency": 0.90,
+					"amount": 53
+				},
+				"transport": {
+					"efficiency": 0.90,
+					"amount": 2.0
+				}
+			}
+		},
+		"heat_pump": {
+			"name": "Värmepump",
+			"energies": {
+				"district_heating": {
+					"efficiency": 2.5,
+					"quota": 0.24
+				}
+			}
+		},
+		"district_heating": {
+			"name": "Fjärrvärme",
+			"energies": {
+				"heating_residences": {
+					"efficiency": 0.81,
+					"quota": 0.49
+				},
+				"heating_industry": {
+					"efficiency": 0.81,
+					"quota": 0.04
+				}
+			}
+		},
+		"heating_residences": {
+			"name": "Värme, bostäder",
+			"sectors": {
+				"residences": {
+					"efficiency": 1.00,
+					"amount": 90
+				}
+			}
+		},
+		"heating_industry": {
+			"name": "Värme, industri",
+			"sectors": {
+				"industry": {
+					"efficiency": 1.00,
+					"amount": 121
+				}
+			}
+		}
+	},
+	"sectors": {
+		"residences": {
+			"name": "Bostäder"
+		},
+		"transport": {
+			"name": "Transport"
+		},
+		"industry": {
+			"name": "Industri"
+		}
+	}
+}
