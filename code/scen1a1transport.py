@@ -10,7 +10,7 @@ fos = [94,22.2]
 bio = [11,60]
 el = [0,2.2]
 
-p1 = plt.bar(ind, fos, width, color='#ff3333')
+p1 = plt.bar(ind, fos, width, color='#e6d822')
 p2 = plt.bar(ind, bio, width, color='#33ff33', bottom=fos)
 p3 = plt.bar(ind, el, width, color='#3333ff', bottom=[fos[j] +bio[j] for j in range(len(fos))])
 
