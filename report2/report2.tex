@@ -352,5 +352,36 @@ Hela detta scenariot är långt ifrån verkligheten. Bilar som drivs på vätgas
 \subsection{Slutsats}
 Det är möjligt att göra Sveriges bilflotta fossilfri, men det kommer att behövas åtgärder; både ekonomiska och struktuella. Vissa åtgärder är redan tagna och andra är på gång. Att bilflottan blir fossilfri bidrar inte bara till klimatmålen utan bidrar även till attraktivare städer, långsiktigt lägre kostnader, attraktivare städer och förbättrad hälsa. Denna kombination gör det högst troligt att nuvarande regering och kommande regeringar kommer driva igenom de styrmedel som krävs. Lösningen lär ligga i elbilar och bilar som drivs på biobränsle, det är de fordon som kommit längst i utvecklingen och de Sveriges infrastruktur har stöd för och en plan för när det kommer till miljövänliga fordon. Det är oklart hur man kommer gå till väga, både med styrmedel och ändrad energifördelning. Det finns flera möjliga lösningar, fler än de vi gått igenom, och det är svårt att veta hur det kommer se ut i framtiden. En sak som är säkert kommande åren är kritiska för att lyckas nå målen och det är en stor utmaning.
 \printbibliography
+
+\section{Programkod}                                                                 
+\lstset{literate=%                                                                   
+    {å}{{\r{a}}}1                                                                    
+    {ä}{{\"a}}1                                                                      
+    {ö}{{\"o}}1                                                                      
+    {Å}{{\r{A}}}1                                                                    
+    {Ä}{{\"A}}1                                                                      
+    {Ö}{{\"O}}1,                                                                     
+    tabsize=2,                                                                       
+    breaklines=true                                                                  
+}                                                                                    
+I denna fil finns klasserna för sektorer samt energier.                              
+\lstinputlisting[language=Python]{../code/Energy.py}                                 
+                                                                                     
+\newpage                                                                             
+Här är själva programmet.                                                            
+\lstinputlisting[language=Python]{../code/main.py}                                   
+                                                                                     
+\newpage                                                                             
+Här är inputdatan från tabellerna vi fick.                                             
+\lstinputlisting[]{../code/system-data.json}  
+
+Här är inputdatan från scenario 1 alternativ 1:
+\lstinputlisting[]{../code/scenario1alt1.json}  
+
+Här är inputdatan från scenario 1 alternativ 1:
+\lstinputlisting[]{../code/scenario1alt2.json}  
+
+Här är inputdatan från scenario 1 alternativ 1:
+\lstinputlisting[]{../code/scenario2.json}  
 \end{document}
 
