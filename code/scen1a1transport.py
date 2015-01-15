@@ -21,6 +21,6 @@ ax.set_xticks(ind+width/2.)
 ax.set_yticks(np.arange(0,120,10))
 ax.set_xticklabels(['Nutid', '2030'])
 ax.legend( (p1[0], p2[0], p3[0]), ('Fossil energi', u'Biobränsle', 'El'))
-
+plt.savefig('../report2/scen1a1transport.png', bbox_inches='tight')
 
 plt.show()
